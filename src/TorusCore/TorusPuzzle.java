@@ -7,6 +7,12 @@ package TorusCore;
 
 import TorusComponent.Block;
 import TorusComponent.Button;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -25,6 +31,8 @@ public class TorusPuzzle {
     private Button mButtonGridHorizontal[];
     private Block mBlockGrid[][];
     private Stage primaryStage;
+    
+    private StringBuffer mStrBuffer;
     
     public TorusPuzzle(Stage stage){
         
@@ -45,6 +53,9 @@ public class TorusPuzzle {
             mButtonGridHorizontal[i] = null;
             mButtonGridVertical[i] = null;
         }
+        
+        // StringBufferの初期化
+        mStrBuffer = new StringBuffer();
     }
     
     /**
@@ -56,6 +67,51 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
+    }
+
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(float userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
+    }
+    
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(double userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
+    }
+    
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(char userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
@@ -67,6 +123,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
@@ -111,6 +170,22 @@ public class TorusPuzzle {
     }
     
     public void updateStage(){
+        
+        Label lblText = new Label();
+        lblText.setText(mStrBuffer.toString());
+        lblText.setFont(new Font(14));
+        
+        HBox boxText = new HBox();
+        boxText.setAlignment(Pos.CENTER);
+        boxText.getChildren().add(lblText);
+        
+        
+        BorderPane layout = new BorderPane();
+        layout.setBottom(boxText);
+        
+        Scene scene = new Scene(layout, 800, 600);
+        
+        primaryStage.setScene(scene);
         
     }
     
