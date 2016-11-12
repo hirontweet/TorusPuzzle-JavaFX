@@ -7,6 +7,12 @@ package TorusCore;
 
 import TorusComponent.Block;
 import TorusComponent.Button;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -164,6 +170,22 @@ public class TorusPuzzle {
     }
     
     public void updateStage(){
+        
+        Label lblText = new Label();
+        lblText.setText(mStrBuffer.toString());
+        lblText.setFont(new Font(14));
+        
+        HBox boxText = new HBox();
+        boxText.setAlignment(Pos.CENTER);
+        boxText.getChildren().add(lblText);
+        
+        
+        BorderPane layout = new BorderPane();
+        layout.setBottom(boxText);
+        
+        Scene scene = new Scene(layout, 800, 600);
+        
+        primaryStage.setScene(scene);
         
     }
     
