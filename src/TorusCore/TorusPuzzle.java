@@ -26,6 +26,8 @@ public class TorusPuzzle {
     private Block mBlockGrid[][];
     private Stage primaryStage;
     
+    private StringBuffer mStrBuffer;
+    
     public TorusPuzzle(Stage stage){
         
         primaryStage = stage;
@@ -45,6 +47,9 @@ public class TorusPuzzle {
             mButtonGridHorizontal[i] = null;
             mButtonGridVertical[i] = null;
         }
+        
+        // StringBufferの初期化
+        mStrBuffer = new StringBuffer();
     }
     
     /**
@@ -56,6 +61,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
 
     /**
@@ -67,6 +75,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
@@ -78,6 +89,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
@@ -89,6 +103,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
@@ -100,6 +117,9 @@ public class TorusPuzzle {
         // 今はコンソールに表示されるように設定している
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
+        
+        mStrBuffer.append(userInput);
+        mStrBuffer.append("\n");
     }
     
     /**
