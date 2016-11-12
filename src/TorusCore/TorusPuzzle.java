@@ -57,6 +57,39 @@ public class TorusPuzzle {
         // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
         System.out.println(userInput);
     }
+
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(float userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+    }
+    
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(double userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+    }
+    
+    /**
+     * 
+     * @param userInput 表示する文字列を入力
+     */
+    public void display(char userInput){
+        
+        // 今はコンソールに表示されるように設定している
+        // TODO: JavaFXのGUIで表示されるように設定する(例えば、Labelを使って)
+        System.out.println(userInput);
+    }
     
     /**
      * 
