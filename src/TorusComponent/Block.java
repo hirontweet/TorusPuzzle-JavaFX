@@ -16,4 +16,8 @@ public class Block {
     public Block(int number){
         mNumber = number;
     }
+    
+    public int getNumber(){
+        return mNumber;
+    }
 }

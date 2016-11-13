@@ -7,10 +7,12 @@ package TorusCore;
 
 import TorusComponent.Block;
 import TorusComponent.Button;
+import TorusGUI.TorusPuzzleGUI;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -21,11 +23,17 @@ import javafx.stage.Stage;
  */
 public class TorusPuzzle {
    
-    public static final int GRID_SIZE = 4;
+    public static final int GRID_SIZE = 5;
     public static final int MAX_BLOCK_WIDTH = GRID_SIZE;
     public static final int MAX_BLOCK_HEIGHT = GRID_SIZE;
     public static final int MAX_BUTTON_WIDTH = GRID_SIZE + 1;
     public static final int MAX_BUTTON_HEIGHT = GRID_SIZE + 1;
+    
+    // BLOCK_SIZEはGRIDの大きさにしたいが、GRID_SIZEがすでに使われているため、仕方がなくBLOCK_SIZEにしている
+    public static final int BLOCK_SIZE = Math.min(TorusPuzzleGUI.GUI_HEIGHT, TorusPuzzleGUI.GUI_WIDTH) / (GRID_SIZE + 1 + 1);
+    public static final int MARGIN_SIZE = 5;
+    public static final int BUTTON_SIZE = BLOCK_SIZE - 2 * MARGIN_SIZE;
+    
     
     private Button mButtonGridVertical[];
     private Button mButtonGridHorizontal[];
@@ -179,11 +187,34 @@ public class TorusPuzzle {
         boxText.setAlignment(Pos.CENTER);
         boxText.getChildren().add(lblText);
         
+        GridPane gridGUI = new GridPane();
+        gridGUI.setAlignment(Pos.CENTER);
+        // Blockを表示する処理
+        for(int y = 0; y < MAX_BLOCK_HEIGHT; y++){
+            for(int x = 0; x < MAX_BLOCK_WIDTH; x++){
+                if(mBlockGrid[y][x] == null){
+                    javafx.scene.control.Button btn = new javafx.scene.control.Button();
+                    btn.setPrefHeight(BUTTON_SIZE);
+                    btn.setPrefWidth(BUTTON_SIZE);
+                    GridPane.setConstraints(btn, x, y);
+                    btn.setVisible(false);
+                    continue;
+                }
+                
+                int number = mBlockGrid[y][x].getNumber();
+                javafx.scene.control.Button btn = new javafx.scene.control.Button(String.valueOf(number));
+                btn.setPrefHeight(BUTTON_SIZE);
+                btn.setPrefWidth(BUTTON_SIZE);
+                GridPane.setConstraints(btn, x, y);
+                gridGUI.getChildren().add(btn);
+            }
+        }
         
         BorderPane layout = new BorderPane();
+        layout.setCenter(gridGUI);
         layout.setBottom(boxText);
         
-        Scene scene = new Scene(layout, 800, 600);
+        Scene scene = new Scene(layout, TorusPuzzleGUI.GUI_WIDTH, TorusPuzzleGUI.GUI_HEIGHT);
         
         primaryStage.setScene(scene);
         
