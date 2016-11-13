@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -187,6 +188,9 @@ public class TorusPuzzle {
         boxText.setAlignment(Pos.CENTER);
         boxText.getChildren().add(lblText);
         
+        /*
+        TODO: 変数名をしっかり決めて、リファクタリング。
+        */
         GridPane gridGUI = new GridPane();
         gridGUI.setAlignment(Pos.CENTER);
         // Blockを表示する処理
@@ -210,8 +214,51 @@ public class TorusPuzzle {
             }
         }
         
+        GridPane gridHorizontalButton = new GridPane();
+        gridHorizontalButton.setAlignment(Pos.CENTER);
+        //ButtonのHorizontalを表示する処理
+        for(int x = 0; x < MAX_BUTTON_WIDTH; x++){
+            if(mButtonGridHorizontal[x] == null){
+                continue;
+            }
+            
+            javafx.scene.control.Button btn = new javafx.scene.control.Button("H");
+            btn.setPrefHeight(BUTTON_SIZE);
+            btn.setPrefWidth(BUTTON_SIZE);
+            GridPane.setConstraints(btn, 0, x);
+            gridHorizontalButton.getChildren().add(btn);
+        }
+        
+        GridPane gridVerticalButton = new GridPane();
+        gridVerticalButton.setAlignment(Pos.CENTER);
+        //ButtonのVerticalを表示する処理
+        for(int y = 1; y < MAX_BUTTON_HEIGHT; y++){
+            if(mButtonGridVertical[y] == null){
+                continue;
+            }
+            
+            javafx.scene.control.Button btn = new javafx.scene.control.Button("V");
+            btn.setPrefHeight(BUTTON_SIZE);
+            btn.setPrefWidth(BUTTON_SIZE);
+            GridPane.setConstraints(btn, y, 0);
+            gridVerticalButton.getChildren().add(btn);
+        }
+        
+        
+        GridPane root = new GridPane();
+        GridPane.setConstraints(gridVerticalButton, 1, 0);
+        GridPane.setConstraints(gridHorizontalButton, 0, 1);
+        GridPane.setConstraints(gridGUI, 1, 1);
+        root.getChildren().addAll(gridGUI, gridHorizontalButton, gridVerticalButton);
+        
+        // これを入れないと左にずれる
+        HBox rootHorizontal = new HBox();
+        rootHorizontal.setAlignment(Pos.CENTER);
+        rootHorizontal.getChildren().add(root);
+        
+        
         BorderPane layout = new BorderPane();
-        layout.setCenter(gridGUI);
+        layout.setCenter(rootHorizontal);
         layout.setBottom(boxText);
         
         Scene scene = new Scene(layout, TorusPuzzleGUI.GUI_WIDTH, TorusPuzzleGUI.GUI_HEIGHT);
