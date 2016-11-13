@@ -189,4 +189,36 @@ public class TorusPuzzle {
         
     }
     
+    /**
+     * Blockを水平に動かすための関数
+     * @param index どの行のBlockを水平に動かすか(0はじまり)
+     */
+    public void moveHorizontally(int index){
+        if(!(index >= 0 && index < MAX_BLOCK_HEIGHT)){
+            return;
+        }
+        
+        Block temporary = mBlockGrid[index][0];
+        for(int i = 0; i < MAX_BLOCK_WIDTH - 1; i++){
+            mBlockGrid[index][i] = mBlockGrid[index][i + 1];
+        }
+        mBlockGrid[index][MAX_BLOCK_WIDTH - 1] = temporary;
+    }
+    
+    /**
+     * Blockを垂直に動かすための関数
+     * @param index どの列のBlockを垂直に動かすか(0はじまり)
+     */
+    public void moveVertically(int index){
+        if(!(index >= 0 && index < MAX_BLOCK_WIDTH)){
+            return;
+        }
+        
+        Block temporary = mBlockGrid[0][index];
+        for(int i = 0; i < MAX_BLOCK_HEIGHT - 1; i++){
+            mBlockGrid[i][index] = mBlockGrid[i + 1][index];
+        }
+        mBlockGrid[MAX_BLOCK_HEIGHT - 1][index] = temporary;
+    }
+    
 }
