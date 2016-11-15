@@ -8,6 +8,7 @@ package TorusCore;
 import TorusComponent.Block;
 import TorusComponent.Button;
 import TorusGUI.TorusPuzzleGUI;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -193,6 +194,9 @@ public class TorusPuzzle {
         */
         GridPane gridGUI = new GridPane();
         gridGUI.setAlignment(Pos.CENTER);
+        gridGUI.setPadding(new Insets(10, 10, 10, 10));
+        gridGUI.setVgap(10);
+        gridGUI.setHgap(10);
         // Blockを表示する処理
         for(int y = 0; y < MAX_BLOCK_HEIGHT; y++){
             for(int x = 0; x < MAX_BLOCK_WIDTH; x++){
@@ -200,6 +204,7 @@ public class TorusPuzzle {
                     javafx.scene.control.Button btn = new javafx.scene.control.Button();
                     btn.setPrefHeight(BUTTON_SIZE);
                     btn.setPrefWidth(BUTTON_SIZE);
+                    //btn.setPadding(new Insets(10, 10, 10, 10));
                     GridPane.setConstraints(btn, x, y);
                     btn.setVisible(false);
                     continue;
@@ -216,6 +221,8 @@ public class TorusPuzzle {
         
         GridPane gridHorizontalButton = new GridPane();
         gridHorizontalButton.setAlignment(Pos.CENTER);
+        gridHorizontalButton.setPadding(new Insets(10, 10, 10, 10));
+        gridHorizontalButton.setVgap(10);
         //ButtonのHorizontalを表示する処理
         for(int x = 0; x < MAX_BUTTON_WIDTH; x++){
             if(mButtonGridHorizontal[x] == null){
@@ -231,6 +238,9 @@ public class TorusPuzzle {
         
         GridPane gridVerticalButton = new GridPane();
         gridVerticalButton.setAlignment(Pos.CENTER);
+        gridVerticalButton.setPadding(new Insets(10, 10, 10, 10));
+        //gridVerticalButton.setVgap(10);
+        gridVerticalButton.setHgap(10);
         //ButtonのVerticalを表示する処理
         for(int y = 1; y < MAX_BUTTON_HEIGHT; y++){
             if(mButtonGridVertical[y] == null){
