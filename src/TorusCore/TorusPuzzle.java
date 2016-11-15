@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  *
  * @author Hirofumi
  */
-public class TorusPuzzle {
+public class TorusPuzzle implements ITorusPuzzle{
    
     public static final int GRID_SIZE = 5;
     public static final int MAX_BLOCK_WIDTH = GRID_SIZE;

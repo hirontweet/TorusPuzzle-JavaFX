@@ -5,7 +5,7 @@
  */
 package TorusUser;
 
-import TorusCore.TorusPuzzle;
+import TorusCore.ITorusPuzzle;
 
 /**
  *
@@ -17,13 +17,13 @@ public class UserCode {
         ** 注意 **
         この部分のコードに変更を加えないでください
     */
-    private TorusPuzzle Torus = null;
+    private ITorusPuzzle Torus = null;
     
     /*
         ** 注意 **
         この部分のコードに変更を加えないでください
     */
-    public UserCode(TorusPuzzle torus){ // この関数を「コンストラクタ」と呼びます
+    public UserCode(ITorusPuzzle torus){ // この関数を「コンストラクタ」と呼びます
         Torus = torus;
     }
     
@@ -31,7 +31,7 @@ public class UserCode {
      * 自分のコードをここに書く
      */
     public void myCode(){
-        
+        Torus.display("HelloWorld");
     }
     /*
         自分のコードはここまで
