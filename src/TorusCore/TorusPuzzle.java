@@ -7,11 +7,16 @@ package TorusCore;
 
 import TorusComponent.Block;
 import TorusComponent.Button;
+import TorusGUI.TorusPuzzleGUI;
+import java.awt.Color;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -21,11 +26,17 @@ import javafx.stage.Stage;
  */
 public class TorusPuzzle {
    
-    public static final int GRID_SIZE = 4;
+    public static final int GRID_SIZE = 5;
     public static final int MAX_BLOCK_WIDTH = GRID_SIZE;
     public static final int MAX_BLOCK_HEIGHT = GRID_SIZE;
     public static final int MAX_BUTTON_WIDTH = GRID_SIZE + 1;
     public static final int MAX_BUTTON_HEIGHT = GRID_SIZE + 1;
+    
+    // BLOCK_SIZEはGRIDの大きさにしたいが、GRID_SIZEがすでに使われているため、仕方がなくBLOCK_SIZEにしている
+    public static final int BLOCK_SIZE = Math.min(TorusPuzzleGUI.GUI_HEIGHT, TorusPuzzleGUI.GUI_WIDTH) / (GRID_SIZE + 1 + 1);
+    public static final int MARGIN_SIZE = 5;
+    public static final int BUTTON_SIZE = BLOCK_SIZE - 2 * MARGIN_SIZE;
+    
     
     private Button mButtonGridVertical[];
     private Button mButtonGridHorizontal[];
@@ -179,11 +190,93 @@ public class TorusPuzzle {
         boxText.setAlignment(Pos.CENTER);
         boxText.getChildren().add(lblText);
         
+        /*
+        TODO: 変数名をしっかり決めて、リファクタリング。
+        */
+        GridPane gridGUI = new GridPane();
+        gridGUI.setAlignment(Pos.CENTER);
+        gridGUI.setPadding(new Insets(10, 10, 10, 10));
+        gridGUI.setVgap(10);
+        gridGUI.setHgap(10);
+        // Blockを表示する処理
+        for(int y = 0; y < MAX_BLOCK_HEIGHT; y++){
+            for(int x = 0; x < MAX_BLOCK_WIDTH; x++){
+                if(mBlockGrid[y][x] == null){
+                    javafx.scene.control.Button btn = new javafx.scene.control.Button();
+                    btn.setPrefHeight(BUTTON_SIZE);
+                    btn.setPrefWidth(BUTTON_SIZE);
+                    //btn.setPadding(new Insets(10, 10, 10, 10));
+                    GridPane.setConstraints(btn, x, y);
+                    btn.setVisible(false);
+                    continue;
+                }
+                
+                int number = mBlockGrid[y][x].getNumber();
+                javafx.scene.control.Button btn = new javafx.scene.control.Button(String.valueOf(number));
+                btn.setPrefHeight(BUTTON_SIZE);
+                btn.setPrefWidth(BUTTON_SIZE);
+                btn.setStyle("-fx-base: #33cc33");
+                GridPane.setConstraints(btn, x, y);
+                gridGUI.getChildren().add(btn);
+            }
+        }
+        
+        GridPane gridHorizontalButton = new GridPane();
+        gridHorizontalButton.setAlignment(Pos.CENTER);
+        gridHorizontalButton.setPadding(new Insets(10, 10, 10, 10));
+        gridHorizontalButton.setVgap(10);
+        //gridHorizontalButton.setHgap(10);
+        //ButtonのHorizontalを表示する処理
+        for(int x = 0; x < MAX_BUTTON_WIDTH; x++){
+            if(mButtonGridHorizontal[x] == null){
+                continue;
+            }
+            
+            javafx.scene.control.Button btn = new javafx.scene.control.Button("H");
+            btn.setPrefHeight(BUTTON_SIZE);
+            btn.setPrefWidth(BUTTON_SIZE);
+            btn.setStyle("-fx-base: #ff0000");
+            GridPane.setConstraints(btn, 0, x);
+            gridHorizontalButton.getChildren().add(btn);
+        }
+        
+        GridPane gridVerticalButton = new GridPane();
+        gridVerticalButton.setAlignment(Pos.CENTER);
+        gridVerticalButton.setPadding(new Insets(10, 10, 10, 10));
+        //gridVerticalButton.setVgap(10);
+        gridVerticalButton.setHgap(10);
+        //ButtonのVerticalを表示する処理
+        for(int y = 1; y < MAX_BUTTON_HEIGHT; y++){
+            if(mButtonGridVertical[y] == null){
+                continue;
+            }
+            
+            javafx.scene.control.Button btn = new javafx.scene.control.Button("V");
+            btn.setPrefHeight(BUTTON_SIZE);
+            btn.setPrefWidth(BUTTON_SIZE);
+            btn.setStyle("-fx-base: #ff0000");
+            GridPane.setConstraints(btn, y, 0);
+            gridVerticalButton.getChildren().add(btn);
+        }
+        
+        
+        GridPane root = new GridPane();
+        GridPane.setConstraints(gridVerticalButton, 1, 0);
+        GridPane.setConstraints(gridHorizontalButton, 0, 1);
+        GridPane.setConstraints(gridGUI, 1, 1);
+        root.getChildren().addAll(gridGUI, gridHorizontalButton, gridVerticalButton);
+        
+        // これを入れないと左にずれる
+        HBox rootHorizontal = new HBox();
+        rootHorizontal.setAlignment(Pos.CENTER);
+        rootHorizontal.getChildren().add(root);
+        
         
         BorderPane layout = new BorderPane();
+        layout.setCenter(rootHorizontal);
         layout.setBottom(boxText);
         
-        Scene scene = new Scene(layout, 800, 600);
+        Scene scene = new Scene(layout, TorusPuzzleGUI.GUI_WIDTH, TorusPuzzleGUI.GUI_HEIGHT);
         
         primaryStage.setScene(scene);
         

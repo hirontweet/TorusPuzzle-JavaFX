@@ -22,6 +22,9 @@ import javafx.stage.Stage;
  */
 public class TorusPuzzleGUI extends Application {
     
+    public static final int GUI_WIDTH = 800;
+    public static final int GUI_HEIGHT = 600;
+    
     private TorusPuzzle mTorusPuzzle;
     private UserCode mUserCode;
     
