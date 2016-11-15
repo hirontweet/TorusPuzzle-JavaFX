@@ -8,6 +8,7 @@ package TorusCore;
 import TorusComponent.Block;
 import TorusComponent.Button;
 import TorusGUI.TorusPuzzleGUI;
+import java.awt.Color;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -214,6 +215,7 @@ public class TorusPuzzle {
                 javafx.scene.control.Button btn = new javafx.scene.control.Button(String.valueOf(number));
                 btn.setPrefHeight(BUTTON_SIZE);
                 btn.setPrefWidth(BUTTON_SIZE);
+                btn.setStyle("-fx-base: #33cc33");
                 GridPane.setConstraints(btn, x, y);
                 gridGUI.getChildren().add(btn);
             }
@@ -223,6 +225,7 @@ public class TorusPuzzle {
         gridHorizontalButton.setAlignment(Pos.CENTER);
         gridHorizontalButton.setPadding(new Insets(10, 10, 10, 10));
         gridHorizontalButton.setVgap(10);
+        //gridHorizontalButton.setHgap(10);
         //ButtonのHorizontalを表示する処理
         for(int x = 0; x < MAX_BUTTON_WIDTH; x++){
             if(mButtonGridHorizontal[x] == null){
@@ -232,6 +235,7 @@ public class TorusPuzzle {
             javafx.scene.control.Button btn = new javafx.scene.control.Button("H");
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
+            btn.setStyle("-fx-base: #ff0000");
             GridPane.setConstraints(btn, 0, x);
             gridHorizontalButton.getChildren().add(btn);
         }
@@ -250,6 +254,7 @@ public class TorusPuzzle {
             javafx.scene.control.Button btn = new javafx.scene.control.Button("V");
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
+            btn.setStyle("-fx-base: #ff0000");
             GridPane.setConstraints(btn, y, 0);
             gridVerticalButton.getChildren().add(btn);
         }
