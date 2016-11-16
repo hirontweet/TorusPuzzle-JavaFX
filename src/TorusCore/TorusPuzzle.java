@@ -9,6 +9,8 @@ import TorusComponent.Block;
 import TorusComponent.Button;
 import TorusGUI.TorusPuzzleGUI;
 import java.awt.Color;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -236,6 +238,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
             btn.setStyle("-fx-base: #ff0000");
+            // Buttonにイベントリスナーを付加
+            // Buttonの配置場所がBlockに比べて一つずれているため、引いている
+            btn.setOnAction(new TorusEventHandlerHorizontal(this, x - 1));
             GridPane.setConstraints(btn, 0, x);
             gridHorizontalButton.getChildren().add(btn);
         }
@@ -255,6 +260,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
             btn.setStyle("-fx-base: #ff0000");
+            // Buttonにイベントリスナーを付加
+            // Buttonの配置場所がBlockに比べて一つずれているため、引いている
+            btn.setOnAction(new TorusEventHandlerVertical(this, y - 1));
             GridPane.setConstraints(btn, y, 0);
             gridVerticalButton.getChildren().add(btn);
         }
@@ -296,6 +304,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             mBlockGrid[index][i] = mBlockGrid[index][i + 1];
         }
         mBlockGrid[index][MAX_BLOCK_WIDTH - 1] = temporary;
+        
+        // 画面を更新
+        updateStage();
     }
     
     /**
@@ -312,6 +323,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             mBlockGrid[i][index] = mBlockGrid[i + 1][index];
         }
         mBlockGrid[MAX_BLOCK_HEIGHT - 1][index] = temporary;
+        
+        // 画面の更新
+        updateStage();
     }
     
 }
