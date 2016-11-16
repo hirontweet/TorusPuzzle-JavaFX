@@ -32,6 +32,14 @@ public class UserCode {
      */
     public void myCode(){
         Torus.display("HelloWorld");
+        
+        for(int y = 0; y < 5; y++){
+            for(int x = 0; x < 5; x++){
+                Torus.makeBlock(5 * y + x + 1, x, y);
+            }
+            Torus.makeButton(0, y + 1, 0);
+            Torus.makeButton(1, 0, y + 1);
+        }
     }
     /*
         自分のコードはここまで
