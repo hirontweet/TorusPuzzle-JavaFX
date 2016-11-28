@@ -234,7 +234,7 @@ public class TorusPuzzle implements ITorusPuzzle{
                 continue;
             }
             
-            javafx.scene.control.Button btn = new javafx.scene.control.Button("H");
+            javafx.scene.control.Button btn = new javafx.scene.control.Button();
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
             btn.setStyle("-fx-base: #ff0000");
@@ -263,7 +263,7 @@ public class TorusPuzzle implements ITorusPuzzle{
                 continue;
             }
             
-            javafx.scene.control.Button btn = new javafx.scene.control.Button("V");
+            javafx.scene.control.Button btn = new javafx.scene.control.Button();
             btn.setPrefHeight(BUTTON_SIZE);
             btn.setPrefWidth(BUTTON_SIZE);
             btn.setStyle("-fx-base: #ff0000");
