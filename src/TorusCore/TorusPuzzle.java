@@ -173,12 +173,16 @@ public class TorusPuzzle implements ITorusPuzzle{
         // VERTICALとdirectionとして入力した場合
         }else if((coord_x == 0) && (coord_y >= 1 && coord_y <= MAX_BLOCK_HEIGHT)){
             Button newButton = new Button(direction, coord_y);
-            mButtonGridVertical[coord_y] = newButton;
+            // TODO: 配列の名前をわかりやすくする
+            // mButtonGridHorizontalという名前は、おそらく、Button.HORIZONTALを受け付けるための配列として用意されていると思われる。
+            mButtonGridHorizontal[coord_y] = newButton;
             
         // HORIZONTALとdirectionとして入力した場合
         }else if((coord_x >= 1 && coord_x <= MAX_BLOCK_WIDTH) && (coord_y == 0)){
             Button newButton = new Button(direction, coord_x);
-            mButtonGridHorizontal[coord_x] = newButton;
+            // TODO: 配列の名前をわかりやすくする
+            // mButtonGridVerticalという名前は、おそらく、Button.VERTICALを受け付けるための配列として用意されていると思われる。
+            mButtonGridVertical[coord_x] = newButton;
         }
     }
     
