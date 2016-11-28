@@ -22,6 +22,10 @@ public class Button {
         mIndex = index;
     }
     
+    /**
+     * 押されたボタンがどっち方向に回転するのかを返す関数
+     * @return ボタンに設定された方向をintで(Buttonクラスの定数で判定)
+     */
     public int getDirection(){
         return mDirection;
     }
