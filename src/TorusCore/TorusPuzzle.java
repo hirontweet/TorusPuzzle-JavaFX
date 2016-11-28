@@ -222,6 +222,7 @@ public class TorusPuzzle implements ITorusPuzzle{
                 btn.setPrefHeight(BUTTON_SIZE);
                 btn.setPrefWidth(BUTTON_SIZE);
                 btn.setStyle("-fx-base: #33cc33");
+                btn.setFont(new Font(24));
                 GridPane.setConstraints(btn, x + 1, y + 1);
                 gridGUI.getChildren().add(btn);
             }
