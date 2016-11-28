@@ -212,7 +212,7 @@ public class TorusPuzzle implements ITorusPuzzle{
                     btn.setPrefHeight(BUTTON_SIZE);
                     btn.setPrefWidth(BUTTON_SIZE);
                     //btn.setPadding(new Insets(10, 10, 10, 10));
-                    GridPane.setConstraints(btn, x, y);
+                    GridPane.setConstraints(btn, x + 1, y + 1);
                     btn.setVisible(false);
                     continue;
                 }
@@ -222,16 +222,18 @@ public class TorusPuzzle implements ITorusPuzzle{
                 btn.setPrefHeight(BUTTON_SIZE);
                 btn.setPrefWidth(BUTTON_SIZE);
                 btn.setStyle("-fx-base: #33cc33");
-                GridPane.setConstraints(btn, x, y);
+                GridPane.setConstraints(btn, x + 1, y + 1);
                 gridGUI.getChildren().add(btn);
             }
         }
         
+        /*
         GridPane gridHorizontalButton = new GridPane();
         gridHorizontalButton.setAlignment(Pos.CENTER);
         gridHorizontalButton.setPadding(new Insets(10, 10, 10, 10));
         gridHorizontalButton.setVgap(10);
         //gridHorizontalButton.setHgap(10);
+        */
         //ButtonのHorizontalを表示する処理
         for(int x = 1; x < MAX_BUTTON_WIDTH; x++){
             if(mButtonGridHorizontal[x] == null){
@@ -239,8 +241,10 @@ public class TorusPuzzle implements ITorusPuzzle{
                 btn.setPrefHeight(BUTTON_SIZE);
                 btn.setPrefWidth(BUTTON_SIZE);
                 btn.setVisible(false);
+//                GridPane.setConstraints(btn, 0, x);
                 GridPane.setConstraints(btn, 0, x);
-                gridHorizontalButton.getChildren().add(btn);
+//                gridHorizontalButton.getChildren().add(btn);
+                gridGUI.getChildren().add(btn);
                 continue;
             }
             
@@ -257,15 +261,19 @@ public class TorusPuzzle implements ITorusPuzzle{
                 TorusEvent = new TorusEventHandlerVertical(this, x - 1);
             }
             btn.setOnAction(TorusEvent);
+//            GridPane.setConstraints(btn, 0, x);
             GridPane.setConstraints(btn, 0, x);
-            gridHorizontalButton.getChildren().add(btn);
+//            gridHorizontalButton.getChildren().add(btn);
+            gridGUI.getChildren().add(btn);
         }
         
+        /*
         GridPane gridVerticalButton = new GridPane();
         gridVerticalButton.setAlignment(Pos.CENTER);
         gridVerticalButton.setPadding(new Insets(10, 10, 10, 10));
         //gridVerticalButton.setVgap(10);
         gridVerticalButton.setHgap(10);
+        */
         //ButtonのVerticalを表示する処理
         for(int y = 1; y < MAX_BUTTON_HEIGHT; y++){
             if(mButtonGridVertical[y] == null){
@@ -274,7 +282,8 @@ public class TorusPuzzle implements ITorusPuzzle{
                 btn.setPrefWidth(BUTTON_SIZE);
                 btn.setVisible(false);
                 GridPane.setConstraints(btn, y, 0);
-                gridVerticalButton.getChildren().add(btn);
+//                gridVerticalButton.getChildren().add(btn);
+                gridGUI.getChildren().add(btn);
                 continue;
             }
             
@@ -292,10 +301,11 @@ public class TorusPuzzle implements ITorusPuzzle{
             }
             btn.setOnAction(TorusEvent);
             GridPane.setConstraints(btn, y, 0);
-            gridVerticalButton.getChildren().add(btn);
+//            gridVerticalButton.getChildren().add(btn);
+            gridGUI.getChildren().add(btn);
         }
         
-        
+        /*
         GridPane root = new GridPane();
         GridPane.setConstraints(gridVerticalButton, 1, 0);
         GridPane.setConstraints(gridHorizontalButton, 0, 1);
@@ -306,10 +316,11 @@ public class TorusPuzzle implements ITorusPuzzle{
         HBox rootHorizontal = new HBox();
         rootHorizontal.setAlignment(Pos.CENTER);
         rootHorizontal.getChildren().add(root);
-        
+        */
         
         BorderPane layout = new BorderPane();
-        layout.setCenter(rootHorizontal);
+//        layout.setCenter(rootHorizontal);
+        layout.setCenter(gridGUI);
         layout.setBottom(boxText);
         
         Scene scene = new Scene(layout, TorusPuzzleGUI.GUI_WIDTH, TorusPuzzleGUI.GUI_HEIGHT);
