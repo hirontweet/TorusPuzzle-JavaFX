@@ -233,8 +233,14 @@ public class TorusPuzzle implements ITorusPuzzle{
         gridHorizontalButton.setVgap(10);
         //gridHorizontalButton.setHgap(10);
         //ButtonのHorizontalを表示する処理
-        for(int x = 0; x < MAX_BUTTON_WIDTH; x++){
+        for(int x = 1; x < MAX_BUTTON_WIDTH; x++){
             if(mButtonGridHorizontal[x] == null){
+                javafx.scene.control.Button btn = new javafx.scene.control.Button();
+                btn.setPrefHeight(BUTTON_SIZE);
+                btn.setPrefWidth(BUTTON_SIZE);
+                btn.setVisible(false);
+                GridPane.setConstraints(btn, 0, x);
+                gridHorizontalButton.getChildren().add(btn);
                 continue;
             }
             
@@ -263,6 +269,12 @@ public class TorusPuzzle implements ITorusPuzzle{
         //ButtonのVerticalを表示する処理
         for(int y = 1; y < MAX_BUTTON_HEIGHT; y++){
             if(mButtonGridVertical[y] == null){
+                javafx.scene.control.Button btn = new javafx.scene.control.Button();
+                btn.setPrefHeight(BUTTON_SIZE);
+                btn.setPrefWidth(BUTTON_SIZE);
+                btn.setVisible(false);
+                GridPane.setConstraints(btn, y, 0);
+                gridVerticalButton.getChildren().add(btn);
                 continue;
             }
             
