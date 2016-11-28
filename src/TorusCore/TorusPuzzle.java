@@ -240,7 +240,14 @@ public class TorusPuzzle implements ITorusPuzzle{
             btn.setStyle("-fx-base: #ff0000");
             // Buttonにイベントリスナーを付加
             // Buttonの配置場所がBlockに比べて一つずれているため、引いている
-            btn.setOnAction(new TorusEventHandlerHorizontal(this, x - 1));
+            EventHandler<ActionEvent> TorusEvent = null;
+            if(mButtonGridHorizontal[x].getDirection() == Button.HORIZONTAL){
+                TorusEvent = new TorusEventHandlerHorizontal(this, x - 1);
+            }else if(mButtonGridHorizontal[x].getDirection() == Button.VERTICAL){
+                TorusEvent = new TorusEventHandlerVertical(this, x - 1);
+            }
+            //btn.setOnAction(new TorusEventHandlerHorizontal(this, x - 1));
+            btn.setOnAction(TorusEvent);
             GridPane.setConstraints(btn, 0, x);
             gridHorizontalButton.getChildren().add(btn);
         }
@@ -262,7 +269,14 @@ public class TorusPuzzle implements ITorusPuzzle{
             btn.setStyle("-fx-base: #ff0000");
             // Buttonにイベントリスナーを付加
             // Buttonの配置場所がBlockに比べて一つずれているため、引いている
-            btn.setOnAction(new TorusEventHandlerVertical(this, y - 1));
+            EventHandler<ActionEvent> TorusEvent = null;
+            if(mButtonGridVertical[y].getDirection() == Button.HORIZONTAL){
+                TorusEvent = new TorusEventHandlerHorizontal(this, y - 1);
+            }else if(mButtonGridVertical[y].getDirection() == Button.VERTICAL){
+                TorusEvent = new TorusEventHandlerVertical(this, y - 1);
+            }
+            //btn.setOnAction(new TorusEventHandlerVertical(this, y - 1));
+            btn.setOnAction(TorusEvent);
             GridPane.setConstraints(btn, y, 0);
             gridVerticalButton.getChildren().add(btn);
         }
