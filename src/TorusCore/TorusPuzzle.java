@@ -246,7 +246,6 @@ public class TorusPuzzle implements ITorusPuzzle{
             }else if(mButtonGridHorizontal[x].getDirection() == Button.VERTICAL){
                 TorusEvent = new TorusEventHandlerVertical(this, x - 1);
             }
-            //btn.setOnAction(new TorusEventHandlerHorizontal(this, x - 1));
             btn.setOnAction(TorusEvent);
             GridPane.setConstraints(btn, 0, x);
             gridHorizontalButton.getChildren().add(btn);
@@ -275,7 +274,6 @@ public class TorusPuzzle implements ITorusPuzzle{
             }else if(mButtonGridVertical[y].getDirection() == Button.VERTICAL){
                 TorusEvent = new TorusEventHandlerVertical(this, y - 1);
             }
-            //btn.setOnAction(new TorusEventHandlerVertical(this, y - 1));
             btn.setOnAction(TorusEvent);
             GridPane.setConstraints(btn, y, 0);
             gridVerticalButton.getChildren().add(btn);
