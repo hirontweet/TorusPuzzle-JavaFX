@@ -21,4 +21,8 @@ public class Button {
         mDirection = direction;
         mIndex = index;
     }
+    
+    public int getDirection(){
+        return mDirection;
+    }
 }
