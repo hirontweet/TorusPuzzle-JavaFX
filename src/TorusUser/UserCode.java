@@ -6,6 +6,7 @@
 package TorusUser;
 
 import TorusCore.ITorusPuzzle;
+import TorusComponent.Button;
 
 /**
  *
