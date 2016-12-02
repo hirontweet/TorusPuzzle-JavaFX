@@ -167,7 +167,10 @@ public class TorusPuzzle implements ITorusPuzzle{
         // (0, 0)に誤って振っても、表示されるようにする
         if(coord_x == 0 && coord_y == 0){
             Button newButton = new Button(-1, -1);
-        
+            // Torus.makeButton(XX, 0, 0)が入力された場合のケースをmButtonGridHorizontalに追加する
+            mButtonGridHorizontal[coord_x] = newButton;
+            
+            
         // VERTICALとdirectionとして入力した場合
         }else if((coord_x == 0) && (coord_y >= 1 && coord_y <= MAX_BLOCK_HEIGHT)){
             Button newButton = new Button(direction, coord_y);
@@ -234,6 +237,20 @@ public class TorusPuzzle implements ITorusPuzzle{
         gridHorizontalButton.setVgap(10);
         //gridHorizontalButton.setHgap(10);
         */
+        
+        //Torus.makeButton(XX, 0, 0)が入力されたときの処理
+        if(mButtonGridHorizontal[0] != null){
+            javafx.scene.control.Button btn = new javafx.scene.control.Button();
+            btn.setPrefHeight(BUTTON_SIZE);
+            btn.setPrefWidth(BUTTON_SIZE);
+            btn.setStyle("-fx-base: #ff0000");
+            
+            // イベントハンドラはつけない。なぜなら、押してもどこも変えられないから
+            
+            GridPane.setConstraints(btn, 0, 0);
+            gridGUI.getChildren().add(btn);
+        }
+        
         //ButtonのHorizontalを表示する処理
         for(int x = 1; x < MAX_BUTTON_WIDTH; x++){
             if(mButtonGridHorizontal[x] == null){
