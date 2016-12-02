@@ -11,8 +11,8 @@ package TorusComponent;
  */
 public class Button {
     
-    public static int VERTICAL = 0;
-    public static int HORIZONTAL = 1;
+    public static int MOVE_VERTICAL = 0;
+    public static int MOVE_HORIZONTAL = 1;
     
     private int mDirection;
     private int mIndex;
