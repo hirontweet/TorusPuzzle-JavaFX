@@ -190,10 +190,11 @@ public class TorusPuzzle implements ITorusPuzzle{
         
         Label lblText = new Label();
         lblText.setText(mStrBuffer.toString());
-        lblText.setFont(new Font(14));
+        lblText.setFont(new Font(24));
         
         HBox boxText = new HBox();
-        boxText.setAlignment(Pos.CENTER);
+//        boxText.setAlignment(Pos.CENTER);
+        boxText.setPadding(new Insets(10, 0, 0 ,10));
         boxText.getChildren().add(lblText);
         
         /*
@@ -256,9 +257,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             // Buttonにイベントリスナーを付加
             // Buttonの配置場所がBlockに比べて一つずれているため、引いている
             EventHandler<ActionEvent> TorusEvent = null;
-            if(mButtonGridHorizontal[x].getDirection() == Button.HORIZONTAL){
+            if(mButtonGridHorizontal[x].getDirection() == Button.MOVE_HORIZONTAL){
                 TorusEvent = new TorusEventHandlerHorizontal(this, x - 1);
-            }else if(mButtonGridHorizontal[x].getDirection() == Button.VERTICAL){
+            }else if(mButtonGridHorizontal[x].getDirection() == Button.MOVE_VERTICAL){
                 TorusEvent = new TorusEventHandlerVertical(this, x - 1);
             }
             btn.setOnAction(TorusEvent);
@@ -295,9 +296,9 @@ public class TorusPuzzle implements ITorusPuzzle{
             // Buttonにイベントリスナーを付加
             // Buttonの配置場所がBlockに比べて一つずれているため、引いている
             EventHandler<ActionEvent> TorusEvent = null;
-            if(mButtonGridVertical[y].getDirection() == Button.HORIZONTAL){
+            if(mButtonGridVertical[y].getDirection() == Button.MOVE_HORIZONTAL){
                 TorusEvent = new TorusEventHandlerHorizontal(this, y - 1);
-            }else if(mButtonGridVertical[y].getDirection() == Button.VERTICAL){
+            }else if(mButtonGridVertical[y].getDirection() == Button.MOVE_VERTICAL){
                 TorusEvent = new TorusEventHandlerVertical(this, y - 1);
             }
             btn.setOnAction(TorusEvent);
@@ -322,8 +323,11 @@ public class TorusPuzzle implements ITorusPuzzle{
         BorderPane layout = new BorderPane();
 //        layout.setCenter(rootHorizontal);
         layout.setCenter(gridGUI);
-        layout.setBottom(boxText);
-        
+        if(mStrBuffer.toString().length() != 0){
+            System.out.println("More than 0");
+            layout.setLeft(boxText);
+        }
+        layout.setStyle("-fx-base: #ffffff");
         Scene scene = new Scene(layout, TorusPuzzleGUI.GUI_WIDTH, TorusPuzzleGUI.GUI_HEIGHT);
         
         primaryStage.setScene(scene);
