@@ -7,7 +7,7 @@ package TorusCore;
 
 /**
  *
- * @author Hirofumi
+ * @author Yamazaki Laboratory
  */
 public interface ITorusPuzzle {
     

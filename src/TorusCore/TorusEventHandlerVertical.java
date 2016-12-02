@@ -10,7 +10,7 @@ import javafx.event.EventHandler;
 
 /**
  *
- * @author hiron_000
+ * @author Yamazaki Laboratory
  */
 public class TorusEventHandlerVertical implements EventHandler<ActionEvent> {
 

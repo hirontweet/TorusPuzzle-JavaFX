@@ -7,7 +7,7 @@ package TorusComponent;
 
 /**
  *
- * @author Hirofumi
+ * @author Yamazaki Laboratory
  */
 public class Button {
     

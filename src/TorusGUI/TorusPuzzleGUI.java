@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author hiron_000
+ * @author Yamazaki Laboratory
  */
 public class TorusPuzzleGUI extends Application {
     

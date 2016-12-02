@@ -8,7 +8,6 @@ package TorusCore;
 import TorusComponent.Block;
 import TorusComponent.Button;
 import TorusGUI.TorusPuzzleGUI;
-import java.awt.Color;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,13 +17,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
  *
- * @author Hirofumi
+ * @author Yamazaki Laboratory
  */
 public class TorusPuzzle implements ITorusPuzzle{
    
